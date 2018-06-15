@@ -10,9 +10,14 @@ class TestWordSearch(unittest.TestCase):
     """Unit tests for the word search module"""
 
     def setUp(self):
-        self. wordsearch = wordsearch.WordSearch
+        self.wordsearch = wordsearch.WordSearch
 
     def test_wordsearch_exists(self):
         """Test the WordSearch oject exists"""
         self.assertIsNotNone(self.wordsearch)
         self.assertEqual(self.wordsearch, wordsearch.WordSearch)
+
+    def test_wordsearch_words(self):
+        """Test wordsearch can have words added"""
+        my_wordsearch = self.wordsearch(words=['SCOTT', 'KELLER'])
+        self.assertEqual(my_wordsearch.words, ['SCOTT', 'KELLER'])
