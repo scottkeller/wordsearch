@@ -19,5 +19,10 @@ class TestWordSearch(unittest.TestCase):
 
     def test_wordsearch_words(self):
         """Test wordsearch can have words added"""
-        my_wordsearch = self.wordsearch(words=['SCOTT', 'KELLER'])
+        my_wordsearch = self.wordsearch(words=['SCOTT', 'KELLER'], grid='SCOTTKELLER')
         self.assertEqual(my_wordsearch.words, ['SCOTT', 'KELLER'])
+
+    def test_wordsearch_grid(self):
+        """"Test the wordsearch has a grid property"""
+        my_wordsearch = self.wordsearch(['SCOTT', 'KELLER'], 'SCOTTKELLER')
+        self.assertEqual(my_wordsearch.grid, 'SCOTTKELLER')

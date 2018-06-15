@@ -12,5 +12,6 @@ class WordSearch(object):
 
     """
 
-    def __init__(self, words):
+    def __init__(self, words, grid):
         self.words = words
+        self.grid = grid
