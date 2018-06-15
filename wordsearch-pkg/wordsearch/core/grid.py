@@ -14,7 +14,6 @@ class Grid(object):
         cells = set()
         y = 0
         for line in text:
-            print line
             x = 0
             line = line.strip()
             if x_seperator is not None:
@@ -24,6 +23,14 @@ class Grid(object):
                 x+=1
             y+=1
         return cells
+
+    def find(self, x, y):
+        """find a cell given its coordinates"""
+        for cell in self.cells:
+            if cell.coordinates == (x,y):
+                return cell
+        else:
+            return None
 
 
 
