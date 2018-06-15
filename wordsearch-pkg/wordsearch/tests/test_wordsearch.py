@@ -1,28 +1,15 @@
 """
-MODULE: test_wordsearch.py
-DESCRIPTION: Runs unit tests on the wordsearch module
+MODULE: test_main
+DESCRIPTION: Runs unit tests on the main module
 """
 
 import unittest
-from ..core import wordsearch
+from ..core import main
 
 class TestWordSearch(unittest.TestCase):
-    """Unit tests for the word search module"""
+    """Unit tests for the min module"""
 
-    def setUp(self):
-        self.wordsearch = wordsearch.WordSearch
-
-    def test_wordsearch_exists(self):
-        """Test the WordSearch oject exists"""
-        self.assertIsNotNone(self.wordsearch)
-        self.assertEqual(self.wordsearch, wordsearch.WordSearch)
-
-    def test_wordsearch_words(self):
-        """Test wordsearch can have words added"""
-        my_wordsearch = self.wordsearch(words=['SCOTT', 'KELLER'], grid='SCOTTKELLER')
-        self.assertEqual(my_wordsearch.words, ['SCOTT', 'KELLER'])
-
-    def test_wordsearch_grid(self):
-        """"Test the wordsearch has a grid property"""
-        my_wordsearch = self.wordsearch(['SCOTT', 'KELLER'], 'SCOTTKELLER')
-        self.assertEqual(my_wordsearch.grid, 'SCOTTKELLER')
+    def test_solve_wordsearch_exists(self):
+        """Test the solve_wordsearch function exists"""
+        self.assertIsNotNone(main.solve_wordsearch)
+        self.assertTrue(callable(main.solve_wordsearch))

@@ -1,5 +1,5 @@
 """
-MODULE: wordsearch.py
+MODULE: core.wordsearch
 DESCRIPTION: Creates a word search game capable of creating a word search
              grid and searching for words hidden in it
 """
