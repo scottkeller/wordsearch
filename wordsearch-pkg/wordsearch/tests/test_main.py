@@ -1,28 +1,31 @@
 """
-MODULE: test_wordsearch
-DESCRIPTION: Runs unit tests on the wordsearch module
+MODULE: test_main
+DESCRIPTION: Runs unit tests on the main module
 """
 
 import unittest
-from ..core import wordsearch
+import os
+from ..core import main
 
-class TestWordSearch(unittest.TestCase):
-    """Unit tests for the word search module"""
 
-    def setUp(self):
-        self.wordsearch = wordsearch.WordSearch
 
-    def test_wordsearch_exists(self):
-        """Test the WordSearch oject exists"""
-        self.assertIsNotNone(self.wordsearch)
-        self.assertEqual(self.wordsearch, wordsearch.WordSearch)
+# Constants
+DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
-    def test_wordsearch_words(self):
-        """Test wordsearch can have words added"""
-        my_wordsearch = self.wordsearch(words=['SCOTT', 'KELLER'], grid='SCOTTKELLER')
-        self.assertEqual(my_wordsearch.words, ['SCOTT', 'KELLER'])
+class TestMain(unittest.TestCase):
+    """Unit tests for the min module"""
 
-    def test_wordsearch_grid(self):
-        """"Test the wordsearch has a grid property"""
-        my_wordsearch = self.wordsearch(['SCOTT', 'KELLER'], 'SCOTTKELLER')
-        self.assertEqual(my_wordsearch.grid, 'SCOTTKELLER')
+    def test_solve_wordsearch_exists(self):
+        """Test the solve_wordsearch function exists"""
+        self.assertIsNotNone(main.solve_wordsearch)
+        self.assertTrue(callable(main.solve_wordsearch))
+
+    def test_read_file(self):
+        """Tests reading a file"""
+        self.assertIsNotNone(main.read_file(os.path.join(DIR_PATH, 'test_input.txt')))
+
+    def test_cannot_read_file(self):
+        """Tests that exception is thrown if the file is not found"""
+        with self.assertRaises(SystemExit) as cm:
+            main.solve_wordsearch('file/not/found')
+        self.assertEqual(cm.exception.code, -1)

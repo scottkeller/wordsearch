@@ -4,9 +4,15 @@ DESCRIPTION: Creates and solves a wordsearch game given the words and grid from 
 """
 import codecs
 import os
+import sys
 
 def solve_wordsearch(path):
-    pass
+    try:
+        my_file = read_file(path)
+
+    except IOError:
+        print('File not found at {}'.format(path))
+        sys.exit(-1)
 
 def read_file(path):
     """Reads a file from a given path"""
