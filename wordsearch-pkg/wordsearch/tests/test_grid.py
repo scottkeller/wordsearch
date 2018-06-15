@@ -26,7 +26,11 @@ class TestGrid(unittest.TestCase):
 
     def test_cell_attributes(self):
         """Tests setting of cell attributes"""
-        my_cell = self.cell(0, 0, 'foo')
-        self.assertEqual(my_cell.x, 0)
-        self.assertEqual(my_cell.y, 0)
+        my_cell = self.cell(0, 1, 'foo')
+        self.assertEqual(my_cell.coordinates, (0, 1))
         self.assertEqual(my_cell.value, 'foo')
+
+    def test_grid_cells(self):
+        """Tests creating the cells of a grid"""
+        my_grid = self.grid(['a,b,c,d\n', 'e,f,g,h\n', 'i,j,k,l'], x_seperator=',')
+        self.assertEqual(len(my_grid.cells), 12)
