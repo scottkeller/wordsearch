@@ -10,5 +10,7 @@ class Grid(object):
 
 class Cell(object):
     """Cell object containg x,y coordinates and value"""
-    def __init__(self):
-        pass
+    def __init__(self, x, y, value):
+        self.x = x
+        self.y = y
+        self.value = value

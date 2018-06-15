@@ -23,3 +23,10 @@ class TestGrid(unittest.TestCase):
         """Tests cell objext exists"""
         self.assertIsNotNone(self.cell)
         self.assertEqual(self.cell, grid.Cell)
+
+    def test_cell_attributes(self):
+        """Tests setting of cell attributes"""
+        my_cell = self.cell(0, 0, 'foo')
+        self.assertEqual(my_cell.x, 0)
+        self.assertEqual(my_cell.y, 0)
+        self.assertEqual(my_cell.value, 'foo')
