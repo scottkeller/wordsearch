@@ -36,3 +36,13 @@ class TestWordSearch(unittest.TestCase):
         """tests words less than 2 characters are rejected"""
         my_wordsearch = self.wordsearch(['a,b,c\n', 'd,e,f\n', 'g,h,i'])
         self.assertRaises(ValueError, my_wordsearch.search, 'a')
+
+    def test_search_horizontal_right(self):
+        """Test finding a word horizontally to the right """
+        my_wordsearch = self.wordsearch(['w,o,r,d\n', 'x,x,x,x\n', 'w,r,o,d'])
+        self.assertEqual(my_wordsearch.search('word'), [(0,0), (1,0), (2,0), (3,0)])
+
+    def test_search_horizontal_left(self):
+        """Test finding a word horizontally to the right """
+        my_wordsearch = self.wordsearch(['w,o,r,l\n', 'x,x,x,x\n', 'd,r,o,w'])
+        self.assertEqual(my_wordsearch.search('word'), [(3,2), (2,2), (1,2), (0,2)])
