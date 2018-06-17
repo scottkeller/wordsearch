@@ -35,8 +35,8 @@ class TestGrid(unittest.TestCase):
         my_grid = self.grid(['a,b,c,d\n', 'e,f,g,h\n', 'i,j,k,l'], x_seperator=',')
         self.assertEqual(len(my_grid.cells), 12)
 
-    def test_find_grid_cell_value(self):
-        """Tests finding a cell value in a grid"""
+    def test_find_grid_cell_by_coordinates(self):
+        """Tests finding a cell in a grid by it's coordinates"""
         my_grid = self.grid(['a,b,c,d\n', 'e,f,g,h\n', 'i,j,k,l'], x_seperator=',')
         self.assertEqual(my_grid.find_value(0 ,0), 'a')
         self.assertEqual(my_grid.find_value(1, 0), 'b')
