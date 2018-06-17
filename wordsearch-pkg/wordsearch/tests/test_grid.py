@@ -35,18 +35,30 @@ class TestGrid(unittest.TestCase):
         my_grid = self.grid(['a,b,c,d\n', 'e,f,g,h\n', 'i,j,k,l'], x_seperator=',')
         self.assertEqual(len(my_grid.cells), 12)
 
+    def test_find_grid_cell_value(self):
+        """Tests finding a cell value in a grid"""
+        my_grid = self.grid(['a,b,c,d\n', 'e,f,g,h\n', 'i,j,k,l'], x_seperator=',')
+        self.assertEqual(my_grid.find_value(0 ,0), 'a')
+        self.assertEqual(my_grid.find_value(1, 0), 'b')
+        self.assertEqual(my_grid.find_value(2, 0), 'c')
+        self.assertEqual(my_grid.find_value(3, 0), 'd')
+        self.assertEqual(my_grid.find_value(0, 1), 'e')
+        self.assertEqual(my_grid.find_value(1, 1), 'f')
+        self.assertEqual(my_grid.find_value(2, 1), 'g')
+        self.assertEqual(my_grid.find_value(3, 1), 'h')
+        self.assertEqual(my_grid.find_value(0, 2), 'i')
+        self.assertEqual(my_grid.find_value(1, 2), 'j')
+        self.assertEqual(my_grid.find_value(2, 2), 'k')
+        self.assertEqual(my_grid.find_value(3, 2), 'l')
+
     def test_find_grid_cell(self):
         """Tests finding a cell in a grid"""
-        my_grid = self.grid(['a,b,c,d\n', 'e,f,g,h\n', 'i,j,k,l'], x_seperator=',')
-        self.assertEqual(my_grid.find(0 ,0).value, 'a')
-        self.assertEqual(my_grid.find(1, 0).value, 'b')
-        self.assertEqual(my_grid.find(2, 0).value, 'c')
-        self.assertEqual(my_grid.find(3, 0).value, 'd')
-        self.assertEqual(my_grid.find(0, 1).value, 'e')
-        self.assertEqual(my_grid.find(1, 1).value, 'f')
-        self.assertEqual(my_grid.find(2, 1).value, 'g')
-        self.assertEqual(my_grid.find(3, 1).value, 'h')
-        self.assertEqual(my_grid.find(0, 2).value, 'i')
-        self.assertEqual(my_grid.find(1, 2).value, 'j')
-        self.assertEqual(my_grid.find(2, 2).value, 'k')
-        self.assertEqual(my_grid.find(3, 2).value, 'l')
+        my_grid = self.grid(['g,o,o,d\n', 'n,i,g,h\n', 't,t,o,o'], x_seperator=',')
+        self.assertEqual(my_grid.find_coordinates('o'), {(1,0), (2,0), (2,2), (3,2)})
+        self.assertEqual(my_grid.find_coordinates('g'), {(0, 0), (2, 1)})
+        self.assertEqual(my_grid.find_coordinates('t'), {(0, 2), (1, 2)})
+        self.assertEqual(my_grid.find_coordinates('n'), {(0, 1)})
+        self.assertEqual(my_grid.find_coordinates('i'), {(1, 1)})
+        self.assertEqual(my_grid.find_coordinates('h'), {(3, 1)})
+        self.assertEqual(my_grid.find_coordinates('x'), None)
+    

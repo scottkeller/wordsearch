@@ -24,13 +24,18 @@ class Grid(object):
             y+=1
         return cells
 
-    def find(self, x, y):
-        """find a cell given its coordinates"""
+    def find_value(self, x, y):
+        """find a cell value given its coordinates"""
         for cell in self.cells:
             if cell.coordinates == (x,y):
-                return cell
+                return cell.value
         else:
             return None
+
+    def find_coordinates(self, value):
+        """find coordinates of all cells with a given value"""
+        cells = {v.coordinates for v in self.cells if v.value == value}
+        return cells if len(cells) > 0 else None
 
 
 
