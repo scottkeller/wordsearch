@@ -76,3 +76,9 @@ class TestWordSearch(unittest.TestCase):
         """Test finding a word diagonally descending to the left"""
         my_wordsearch = self.wordsearch(['x,x,x,w\n', 'x,x,o,x\n', 'x,r,x,x\n', 'd,x,x,x'])
         self.assertEqual(my_wordsearch.search('word'), [(3,0), (2,1), (1,2), (0,3)])
+
+    def test_not_found(self):
+        """Test finding a word not in the grid"""
+        my_wordsearch = self.wordsearch(['x,x,x,w\n', 'x,x,o,x\n', 'x,r,x,x\n', 'd,x,x,x'])
+        self.assertEqual(my_wordsearch.search('notfound'), None)
+
