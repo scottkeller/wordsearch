@@ -25,3 +25,7 @@ class WordSearch(Grid):
         # find all possible adjacent cell coordinates that exist in the grid
         return {(x+ox, y+oy) for (ox, oy) in offset if x+ox >=0 and y+oy >= 0 and (x+ox, y+oy) in {c.coordinates for c in self.cells}}
 
+    def search(self, word):
+        """searches for a word in the wordsearch grid"""
+        if len(word) < 2:
+            raise ValueError('Invalid word {}: must be at least 2 charatcers'.format(word))

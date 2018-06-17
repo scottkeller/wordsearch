@@ -23,6 +23,7 @@ class TestWordSearch(unittest.TestCase):
         self.assertIsInstance(my_wordsearch, grid.Grid)
 
     def test_find_adjacent_cells(self):
+        """test adjacent cell coordinates are correctly found"""
         my_wordsearch = self.wordsearch(['a,b,c\n', 'd,e,f\n', 'g,h,i'])
         # test origin
         self.assertEqual(my_wordsearch.find_adjacent_cells(0,0), {(0, 1), (1, 0), (1, 1)})
@@ -31,3 +32,7 @@ class TestWordSearch(unittest.TestCase):
         # test center
         self.assertEqual(my_wordsearch.find_adjacent_cells(1, 1),
                          {(0, 0), (1, 0), (2, 0), (0, 1), (2, 1), (0, 2), (1, 2), (2, 2)})
+    def test_search_invalid_word_length(self):
+        """tests words less than 2 characters are rejected"""
+        my_wordsearch = self.wordsearch(['a,b,c\n', 'd,e,f\n', 'g,h,i'])
+        self.assertRaises(ValueError, my_wordsearch.search, 'a')
