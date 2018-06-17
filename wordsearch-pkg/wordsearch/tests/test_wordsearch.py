@@ -4,7 +4,7 @@ DESCRIPTION: Runs unit tests on the wordsearch module
 """
 
 import unittest
-from ..core import wordsearch
+from ..core import wordsearch, grid
 
 class TestWordSearch(unittest.TestCase):
     """Unit tests for the word search module"""
@@ -19,10 +19,10 @@ class TestWordSearch(unittest.TestCase):
 
     def test_wordsearch_words(self):
         """Test wordsearch can have words added"""
-        my_wordsearch = self.wordsearch(words=['SCOTT', 'KELLER'], grid='SCOTTKELLER')
+        my_wordsearch = self.wordsearch(words=['SCOTT', 'KELLER'], word_grid='SCOTTKELLER')
         self.assertEqual(my_wordsearch.words, ['SCOTT', 'KELLER'])
 
     def test_wordsearch_grid(self):
         """"Test the wordsearch has a grid property"""
         my_wordsearch = self.wordsearch(['SCOTT', 'KELLER'], 'SCOTTKELLER')
-        self.assertEqual(my_wordsearch.grid, 'SCOTTKELLER')
+        self.assertIsInstance(my_wordsearch.grid, grid.Grid)
