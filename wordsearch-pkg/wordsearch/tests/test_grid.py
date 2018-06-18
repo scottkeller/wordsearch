@@ -62,3 +62,5 @@ class TestGrid(unittest.TestCase):
         self.assertEqual(my_grid.find_coordinates('h'), {(3, 1)})
         self.assertEqual(my_grid.find_coordinates('x'), None)
     
+if __name__ == '__main__':
+    unittest.main()

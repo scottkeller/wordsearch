@@ -29,3 +29,6 @@ class TestMain(unittest.TestCase):
         with self.assertRaises(SystemExit) as cm:
             main.solve_wordsearch('file/not/found')
         self.assertEqual(cm.exception.code, -1)
+
+if __name__ == '__main__':
+    unittest.main()
