@@ -114,7 +114,7 @@ Tests are located in the "wordsearch-pkg/wordsearch/tests" directory. To run tes
     test_solve_wordsearch_exists (wordsearch.tests.test_main.TestMain)
     Test the solve_wordsearch function exists ... ok
 
-----------------------------------------------------------------------
-Ran 24 tests in 0.014s
+    ----------------------------------------------------------------------
+    Ran 24 tests in 0.014s
 
 
