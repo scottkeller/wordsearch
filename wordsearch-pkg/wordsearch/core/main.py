@@ -5,6 +5,7 @@ DESCRIPTION: Creates and solves a wordsearch game given the words and grid from 
 import codecs
 import os
 import sys
+from .wordsearch import WordSearch
 
 def solve_wordsearch(path):
     try:
@@ -13,6 +14,17 @@ def solve_wordsearch(path):
     except IOError:
         print('File not found at {}'.format(path))
         sys.exit(-1)
+    file_data = my_file.readlines()
+    words = file_data.pop(0).strip().split(',')
+    my_wordsearch = WordSearch(file_data)
+    solution = []
+    for word in words:
+        coords = my_wordsearch.search(word)
+        if coords is not None:
+            solution.append('{}: {}'.format(word, ','.join([str(c).replace(' ', '') for c in coords])))
+        else:
+            solution.append('{}: Not found!'.format(word))
+    return solution
 
 def read_file(path):
     """Reads a file from a given path"""
