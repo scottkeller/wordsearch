@@ -44,8 +44,8 @@ class TestWordSearch(unittest.TestCase):
 
     def test_search_horizontal_left(self):
         """Test finding a word horizontally to the left """
-        my_wordsearch = self.wordsearch(['w,o,r,l\n', 'x,x,x,x\n', 'd,r,o,w'])
-        self.assertEqual(my_wordsearch.search('word'), [(3,2), (2,2), (1,2), (0,2)])
+        my_wordsearch = self.wordsearch(['w,o,r,l\n', 'x,x,x,x\n', 'w,r,o,w'])
+        self.assertEqual(my_wordsearch.search('worw'), [(3,2), (2,2), (1,2), (0,2)])
 
     def test_vertical_down(self):
         """Test finding a word vertically down"""
@@ -82,3 +82,10 @@ class TestWordSearch(unittest.TestCase):
         my_wordsearch = self.wordsearch(['x,x,x,w\n', 'x,x,o,x\n', 'x,r,x,x\n', 'd,x,x,x'])
         self.assertEqual(my_wordsearch.search('notfound'), None)
 
+    def test_multiple_directions(self):
+        """Test finding a word when there are multiple potentail directional matches"""
+        my_wordsearch = self.wordsearch(['w,o,r,d\n', 'o,o,x,x\n', 'r,x,r,d'])
+        self.assertEqual(my_wordsearch.search('word'), [(0, 0), (1, 0), (2, 0), (3, 0)])
+
+if __name__ == '__main__':
+    unittest.main()

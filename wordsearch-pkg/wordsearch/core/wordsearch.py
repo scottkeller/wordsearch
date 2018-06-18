@@ -43,17 +43,20 @@ class WordSearch(Grid):
             direction = {(ax - x, ay -y) for ax, ay in self.find_adjacent_cells(x, y) if self.find_value(ax, ay) == word[1]}
             for dir in direction:
                 dx, dy = dir
+                # initialize nextx and nexty to word origin AKA coordinates of the first letter
+                nx = x
+                ny = y
                 # add the current first letter coordinates to the matches list
                 matches = [coord]
                 # check the letters after the first letter
                 for i in range(len(word) -1 ):
                     # move in the direction
-                    x = x+dx
-                    y = y+dy
+                    nx = nx+dx
+                    ny = ny+dy
                     # add the coordinates to the matches list if the letter at those coordinates matches
                     # the letter in the word
-                    if self.find_value(x,y) == word[i+1]:
-                        matches.append((x,y))
+                    if self.find_value(nx,ny) == word[i+1]:
+                        matches.append((nx,ny))
                     # if it doesn't match move on and try the next direction if any
                     else:
                         break
